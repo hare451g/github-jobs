@@ -1,5 +1,5 @@
-import Head from 'next/head';
-
-export default function Home() {
+function Home() {
   return <div>Github jobs</div>;
 }
+
+export default Home;
