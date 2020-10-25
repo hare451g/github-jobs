@@ -28,3 +28,7 @@
 .locationInput:focus {
   outline: none;
 }
+
+.checkBox {
+  margin: 8px 0px;
+}
