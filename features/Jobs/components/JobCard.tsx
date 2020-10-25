@@ -32,10 +32,10 @@ const JobCard: React.FC<propTypes> = ({
         src={imgAlternative(company_logo)}
       />
       <div className={styles.jobInfo}>
-        <div>
+        <div className={styles.jobInfoBody}>
           <p className={styles.companyName}>{company}</p>
           <p className={styles.jobTitle}>{title}</p>
-          <p className={styles.jobType}>{type}</p>
+          <span className={styles.jobType}>{type}</span>
         </div>
         <div className={styles.jobInfoFooter}>
           <p className={styles.jobAdditionalInfo}>
