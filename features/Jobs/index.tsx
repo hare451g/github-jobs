@@ -30,11 +30,8 @@ const Jobs: React.FC<propTypes> = () => {
   };
 
   // handle fulltime change
-  const handleFulltimeChange = (fullTime: boolean) => {
-    setParams((prev) => ({
-      ...prev,
-      fullTime,
-    }));
+  const handleFulltimeChange = () => {
+    setParams((prev) => ({ ...prev, fullTime: !prev.fullTime || undefined }));
   };
 
   // handle params changes
@@ -49,12 +46,10 @@ const Jobs: React.FC<propTypes> = () => {
         submitSearch={handleSubmitSearch}
         loading={loading}
       />
-
       <FulltimeFilter
-        initialValue={params.fullTime}
+        isFulltime={params.fullTime}
         onFulltimeChange={handleFulltimeChange}
       />
-
       <JobList error={error} ids={ids} list={list} loading={loading} />
     </div>
   );

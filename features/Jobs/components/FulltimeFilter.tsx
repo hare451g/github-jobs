@@ -1,24 +1,16 @@
-import { useState } from 'react';
-
 type propTypes = {
-  initialValue: boolean;
-  onFulltimeChange: (current?: boolean) => void;
+  isFulltime: boolean;
+  onFulltimeChange: () => void;
 };
 
 const FulltimeFilter: React.FC<propTypes> = ({
-  initialValue = false,
+  isFulltime,
   onFulltimeChange,
-}) => {
-  const handleCheckChange = () => {
-    onFulltimeChange(!initialValue || undefined);
-  };
-
-  return (
-    <label>
-      <input type="checkbox" onChange={handleCheckChange} />
-      <span>Full time</span>
-    </label>
-  );
-};
+}) => (
+  <label>
+    <input type="checkbox" checked={isFulltime} onChange={onFulltimeChange} />
+    <span>Full time</span>
+  </label>
+);
 
 export default FulltimeFilter;
