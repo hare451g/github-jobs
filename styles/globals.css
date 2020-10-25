@@ -17,8 +17,12 @@ html,
 body {
   background-color: var(--ghost-white);
   padding: 0;
-  margin: 0;
+  margin: 0px 0px;
   color: var(--dark-blue);
+}
+
+body {
+  margin: 0 18px;
 }
 
 a {
