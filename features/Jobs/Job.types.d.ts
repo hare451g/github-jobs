@@ -17,7 +17,7 @@ type requestParams = {
   location?: string;
   lat?: string;
   long?: string;
-  fullTime?: string;
+  fullTime?: boolean;
 };
 
 type jobStateTypes = {

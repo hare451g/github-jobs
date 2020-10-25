@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 
 import DescriptionFilter from './components/DescriptionFilter';
+import FulltimeFilter from './components/FulltimeFilter';
 import JobList from './components/JobList';
 import useJobApi from './hooks/useJobApi';
+
+import styles from './index.module.css';
 
 type propTypes = {};
 
@@ -13,11 +16,11 @@ const Jobs: React.FC<propTypes> = () => {
 
   // params
   const [params, setParams] = useState({
-    description: 'javascript',
-    location: 'united states',
+    description: 'python',
+    location: 'us',
     lat: undefined,
     long: undefined,
-    fullTime: undefined,
+    fullTime: false,
   });
 
   // handle descriptions changes
@@ -28,6 +31,11 @@ const Jobs: React.FC<propTypes> = () => {
     }));
   };
 
+  // handle fulltime change
+  const handleFulltimeChange = () => {
+    setParams((prev) => ({ ...prev, fullTime: !prev.fullTime || undefined }));
+  };
+
   // handle params changes
   useEffect(() => {
     actions.performFetchJob(params);
@@ -35,12 +43,22 @@ const Jobs: React.FC<propTypes> = () => {
 
   return (
     <div>
-      <DescriptionFilter
-        initialValue={params.description}
-        submitSearch={handleSubmitSearch}
-        loading={loading}
-      />
-      <JobList error={error} ids={ids} list={list} loading={loading} />
+      <section className={styles.descriptionFilterSection}>
+        <DescriptionFilter
+          initialValue={params.description}
+          submitSearch={handleSubmitSearch}
+          loading={loading}
+        />
+      </section>
+      <section className={styles.fulltimeFilterSection}>
+        <FulltimeFilter
+          isFulltime={params.fullTime}
+          onFulltimeChange={handleFulltimeChange}
+        />
+      </section>
+      <section className={styles.jobSection}>
+        <JobList error={error} ids={ids} list={list} loading={loading} />
+      </section>
     </div>
   );
 };
