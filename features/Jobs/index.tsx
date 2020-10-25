@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
+import DescriptionFilter from './components/DescriptionFilter';
 import JobCard from './components/JobCard';
 import useJobApi from './hooks/useJobApi';
 
@@ -18,6 +19,14 @@ const Jobs: React.FC<propTypes> = () => {
     fullTime: undefined,
   });
 
+  // handle descriptions changes
+  const handleSubmitSearch = (keyword: string) => {
+    setParams((prev) => ({
+      ...prev,
+      description: keyword,
+    }));
+  };
+
   // handle params changes
   useEffect(() => {
     actions.performFetchJob(params);
@@ -33,6 +42,10 @@ const Jobs: React.FC<propTypes> = () => {
 
   return (
     <div>
+      <DescriptionFilter
+        initialValue={params.description}
+        submitSearch={handleSubmitSearch}
+      />
       {ids.map((id) => {
         const {
           company,
