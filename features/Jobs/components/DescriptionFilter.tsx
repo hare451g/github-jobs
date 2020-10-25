@@ -1,4 +1,6 @@
 import { FormEvent, useState } from 'react';
+import MaterialIcons from '../../../components/MaterialIcons';
+import styles from './DescriptionFilter.module.css';
 
 type propTypes = {
   initialValue?: string;
@@ -22,14 +24,20 @@ const DescriptionFilter: React.FC<propTypes> = ({
     setKeyword(e.target.value);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        onChange={handleKeywordchange}
-        value={keyword}
-        placeholder={placeholder}
-      />
-      <button type="submit">Search</button>
-    </form>
+    <div className={styles.searchContainer}>
+      <form className={styles.formContainer} onSubmit={handleSubmit}>
+        <MaterialIcons iconName="work_outline" />
+        <input
+          className={styles.searchInput}
+          onChange={handleKeywordchange}
+          placeholder={placeholder}
+          value={keyword}
+        />
+        <button className={styles.submitButton} type="submit">
+          Search
+        </button>
+      </form>
+    </div>
   );
 };
 

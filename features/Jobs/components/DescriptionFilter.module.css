@@ -1,0 +1,46 @@
+.searchContainer {
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  padding: 42px 18px;
+
+  background-image: url('/images/header-background.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+}
+
+.formContainer {
+  display: flex;
+  align-items: center;
+  color: var(--grey);
+  width: 100%;
+  background-color: var(--white);
+  padding: 4px;
+  padding-left: 18px;
+  border-radius: 4px;
+  max-width: 720px;
+}
+
+.searchInput {
+  border: none;
+  padding: 14px 8px;
+  margin: 0 8px;
+  font-size: 12px;
+  line-height: 14px;
+  width: 100%;
+}
+
+.submitButton {
+  background-color: var(--blue);
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+
+  padding: 14px 28px;
+  border-radius: 4px;
+
+  font-size: 1rem;
+  font-weight: 500;
+}
