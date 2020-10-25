@@ -4,12 +4,14 @@ import styles from './DescriptionFilter.module.css';
 
 type propTypes = {
   initialValue?: string;
+  loading?: boolean;
   submitSearch?: (keyword: string) => void;
   placeholder?: string;
 };
 
 const DescriptionFilter: React.FC<propTypes> = ({
   initialValue = '',
+  loading = false,
   placeholder = 'Title, companies, expertise or benefits',
   submitSearch,
 }) => {
@@ -33,8 +35,12 @@ const DescriptionFilter: React.FC<propTypes> = ({
           placeholder={placeholder}
           value={keyword}
         />
-        <button className={styles.submitButton} type="submit">
-          Search
+        <button
+          className={styles.submitButton}
+          disabled={loading}
+          type="submit"
+        >
+          {loading ? 'Loading' : 'Search'}
         </button>
       </form>
     </div>

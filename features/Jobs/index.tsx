@@ -38,6 +38,7 @@ const Jobs: React.FC<propTypes> = () => {
       <DescriptionFilter
         initialValue={params.description}
         submitSearch={handleSubmitSearch}
+        loading={loading}
       />
       <JobList error={error} ids={ids} list={list} loading={loading} />
     </div>

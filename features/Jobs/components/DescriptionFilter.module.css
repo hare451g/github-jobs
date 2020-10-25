@@ -30,6 +30,11 @@
   font-size: 12px;
   line-height: 14px;
   width: 100%;
+  color: var(--grey);
+}
+
+.searchInput:focus {
+  outline: none;
 }
 
 .submitButton {
@@ -43,4 +48,9 @@
 
   font-size: 1rem;
   font-weight: 500;
+}
+
+.submitButton:disabled {
+  background-color: var(--grey);
+  cursor: progress;
 }
