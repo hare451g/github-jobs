@@ -1,6 +1,7 @@
-import { SyntheticEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
 import DescriptionFilter from './components/DescriptionFilter';
-import JobCard from './components/JobCard';
+import JobList from './components/JobList';
 import useJobApi from './hooks/useJobApi';
 
 type propTypes = {};
@@ -32,42 +33,13 @@ const Jobs: React.FC<propTypes> = () => {
     actions.performFetchJob(params);
   }, [params]);
 
-  if (error) {
-    return <p>{error}</p>;
-  }
-
-  if (loading) {
-    return <p>loading . . .</p>;
-  }
-
   return (
     <div>
       <DescriptionFilter
         initialValue={params.description}
         submitSearch={handleSubmitSearch}
       />
-      {ids.map((id) => {
-        const {
-          company,
-          company_logo,
-          created_at,
-          title,
-          type,
-          location,
-        } = list[id];
-        return (
-          <JobCard
-            key={id}
-            id={id}
-            company={company}
-            company_logo={company_logo}
-            created_at={created_at}
-            location={location}
-            title={title}
-            type={type}
-          />
-        );
-      })}
+      <JobList error={error} ids={ids} list={list} loading={loading} />
     </div>
   );
 };
