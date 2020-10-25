@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import JobCard from './components/JobCard';
 import useJobApi from './hooks/useJobApi';
 
 type propTypes = {};
@@ -32,32 +33,28 @@ const Jobs: React.FC<propTypes> = () => {
 
   return (
     <div>
-      <ul>
-        <li>
-          {ids.map((id) => {
-            const {
-              company,
-              company_logo,
-              company_url,
-              created_at,
-              description,
-              title,
-              type,
-              location,
-            } = list[id];
-            return (
-              <li key={id}>
-                <img src={company_logo} width={90} />
-                <a href={company_url}>{company}</a>
-                <p>{title}</p>
-                <p>{type}</p>
-                <p>{created_at}</p>
-                <p>{location}</p>
-              </li>
-            );
-          })}
-        </li>
-      </ul>
+      {ids.map((id) => {
+        const {
+          company,
+          company_logo,
+          created_at,
+          title,
+          type,
+          location,
+        } = list[id];
+        return (
+          <JobCard
+            key={id}
+            id={id}
+            company={company}
+            company_logo={company_logo}
+            created_at={created_at}
+            location={location}
+            title={title}
+            type={type}
+          />
+        );
+      })}
     </div>
   );
 };
