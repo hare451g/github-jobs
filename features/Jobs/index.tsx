@@ -5,6 +5,8 @@ import FulltimeFilter from './components/FulltimeFilter';
 import JobList from './components/JobList';
 import useJobApi from './hooks/useJobApi';
 
+import styles from './index.module.css';
+
 type propTypes = {};
 
 const Jobs: React.FC<propTypes> = () => {
@@ -41,16 +43,22 @@ const Jobs: React.FC<propTypes> = () => {
 
   return (
     <div>
-      <DescriptionFilter
-        initialValue={params.description}
-        submitSearch={handleSubmitSearch}
-        loading={loading}
-      />
-      <FulltimeFilter
-        isFulltime={params.fullTime}
-        onFulltimeChange={handleFulltimeChange}
-      />
-      <JobList error={error} ids={ids} list={list} loading={loading} />
+      <section className={styles.descriptionFilterSection}>
+        <DescriptionFilter
+          initialValue={params.description}
+          submitSearch={handleSubmitSearch}
+          loading={loading}
+        />
+      </section>
+      <section className={styles.fulltimeFilterSection}>
+        <FulltimeFilter
+          isFulltime={params.fullTime}
+          onFulltimeChange={handleFulltimeChange}
+        />
+      </section>
+      <section className={styles.jobSection}>
+        <JobList error={error} ids={ids} list={list} loading={loading} />
+      </section>
     </div>
   );
 };
