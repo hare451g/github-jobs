@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import DescriptionFilter from './components/DescriptionFilter';
 import FulltimeFilter from './components/FulltimeFilter';
 import JobList from './components/JobList';
+import LocationFilter from './components/LocationFilter';
 import useJobApi from './hooks/useJobApi';
 
 import styles from './index.module.css';
@@ -36,6 +37,14 @@ const Jobs: React.FC<propTypes> = () => {
     setParams((prev) => ({ ...prev, fullTime: !prev.fullTime || undefined }));
   };
 
+  // handle location change
+  const handleLocationChange = (keyword: string) => {
+    setParams((prev) => ({
+      ...prev,
+      location: keyword,
+    }));
+  };
+
   // handle params changes
   useEffect(() => {
     actions.performFetchJob(params);
@@ -54,6 +63,12 @@ const Jobs: React.FC<propTypes> = () => {
         <FulltimeFilter
           isFulltime={params.fullTime}
           onFulltimeChange={handleFulltimeChange}
+        />
+      </section>
+      <section className={styles.locationFilterSection}>
+        <LocationFilter
+          initialValue={params.location}
+          onSubmit={handleLocationChange}
         />
       </section>
       <section className={styles.jobSection}>
