@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import DescriptionFilter from './components/DescriptionFilter';
+import FulltimeFilter from './components/FulltimeFilter';
 import JobList from './components/JobList';
 import useJobApi from './hooks/useJobApi';
 
@@ -13,11 +14,11 @@ const Jobs: React.FC<propTypes> = () => {
 
   // params
   const [params, setParams] = useState({
-    description: 'javascript',
-    location: 'united states',
+    description: 'python',
+    location: 'us',
     lat: undefined,
     long: undefined,
-    fullTime: undefined,
+    fullTime: false,
   });
 
   // handle descriptions changes
@@ -25,6 +26,14 @@ const Jobs: React.FC<propTypes> = () => {
     setParams((prev) => ({
       ...prev,
       description: keyword,
+    }));
+  };
+
+  // handle fulltime change
+  const handleFulltimeChange = (fullTime: boolean) => {
+    setParams((prev) => ({
+      ...prev,
+      fullTime,
     }));
   };
 
@@ -40,6 +49,12 @@ const Jobs: React.FC<propTypes> = () => {
         submitSearch={handleSubmitSearch}
         loading={loading}
       />
+
+      <FulltimeFilter
+        initialValue={params.fullTime}
+        onFulltimeChange={handleFulltimeChange}
+      />
+
       <JobList error={error} ids={ids} list={list} loading={loading} />
     </div>
   );
