@@ -6,7 +6,7 @@ import {
   listType,
   idsType,
   jobStateTypes,
-} from '../Job.types';
+} from '../../../types/Job.types';
 
 const normalizer = (previous: Job | {}, current: Job) => ({
   ...previous,

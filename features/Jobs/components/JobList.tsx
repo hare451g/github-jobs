@@ -1,4 +1,4 @@
-import { idsType, listType } from '../Job.types';
+import { idsType, listType } from '../../../types/Job.types';
 import JobCard from './JobCard';
 
 type propTypes = {
