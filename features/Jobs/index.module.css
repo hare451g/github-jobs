@@ -7,3 +7,22 @@
   margin-top: 16px;
   margin-bottom: 24px;
 }
+
+@media (min-width: 600px) {
+  .body {
+    display: flex;
+  }
+
+  .filterSection {
+    width: 25%;
+    max-width: 380px;
+  }
+
+  .jobSection {
+    margin-top: 30px;
+    margin-left: 32px;
+    width: 100%;
+    overflow-y: scroll;
+    height: 70vh;
+  }
+}

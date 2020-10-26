@@ -59,21 +59,25 @@ const Jobs: React.FC<propTypes> = () => {
           loading={loading}
         />
       </section>
-      <section className={styles.fulltimeFilterSection}>
-        <FulltimeFilter
-          isFulltime={params.fullTime}
-          onFulltimeChange={handleFulltimeChange}
-        />
-      </section>
-      <section className={styles.locationFilterSection}>
-        <LocationFilter
-          initialValue={params.location}
-          onSubmit={handleLocationChange}
-        />
-      </section>
-      <section className={styles.jobSection}>
-        <JobList error={error} ids={ids} list={list} loading={loading} />
-      </section>
+      <div className={styles.body}>
+        <section className={styles.filterSection}>
+          <div className={styles.fulltimeFilterSection}>
+            <FulltimeFilter
+              isFulltime={params.fullTime}
+              onFulltimeChange={handleFulltimeChange}
+            />
+          </div>
+          <div className={styles.locationFilterSection}>
+            <LocationFilter
+              initialValue={params.location}
+              onSubmit={handleLocationChange}
+            />
+          </div>
+        </section>
+        <section className={styles.jobSection}>
+          <JobList error={error} ids={ids} list={list} loading={loading} />
+        </section>
+      </div>
     </div>
   );
 };
