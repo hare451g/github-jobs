@@ -1,5 +1,9 @@
+import styles from './MaterialIcons.module.css';
+
 const MaterialIcons = ({ iconName }) => (
-  <i className="material-icons">{iconName}</i>
+  <span className={styles.materialIconsWwrapper}>
+    <i className="material-icons">{iconName}</i>
+  </span>
 );
 
 export default MaterialIcons;
