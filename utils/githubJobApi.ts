@@ -1,7 +1,10 @@
 import Axios from 'axios';
 
+const PROXY = 'https://cors-anywhere.herokuapp.com';
+const GITHUB_JOB_API_URL = 'https://jobs.github.com/';
+
 const githubJobApi = Axios.create({
-  baseURL: 'https://github-jobs-proxy.appspot.com',
+  baseURL: `${PROXY}/${GITHUB_JOB_API_URL}`,
   timeout: 20 * 1000,
 });
 
