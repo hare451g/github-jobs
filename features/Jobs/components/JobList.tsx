@@ -1,10 +1,10 @@
-import { idsType, listType } from '../../../types/Job.types';
+import { jobListType, jobIdsType } from '../../../types/Job.types';
 import JobCard from './JobCard';
 
 type propTypes = {
   error: Error['message'];
-  ids?: idsType;
-  list?: listType;
+  ids?: jobIdsType;
+  list?: jobListType;
   loading: boolean;
 };
 
@@ -22,33 +22,24 @@ const JobList: React.FC<propTypes> = ({
     return <div>Loading contents . . . </div>;
   }
 
-  if (ids) {
-    return (
-      <div>
-        {ids.map((id) => {
-          const {
-            company,
-            company_logo,
-            created_at,
-            title,
-            type,
-            location,
-          } = list[id];
-          return (
-            <JobCard
-              key={id}
-              id={id}
-              company={company}
-              company_logo={company_logo}
-              created_at={created_at}
-              location={location}
-              title={title}
-              type={type}
-            />
-          );
-        })}
-      </div>
+  if (ids && ids.length > 0) {
+    const jobs = ids.map((id) => list[id]);
+    const cards = jobs.map(
+      ({ company, company_logo, created_at, id, location, title, type }) => (
+        <JobCard
+          key={id}
+          id={id}
+          company={company}
+          company_logo={company_logo}
+          created_at={created_at}
+          location={location}
+          title={title}
+          type={type}
+        />
+      )
     );
+
+    return <div>{cards}</div>;
   }
 
   return <div>Empty job list</div>;

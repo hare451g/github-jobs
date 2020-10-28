@@ -4,7 +4,7 @@ import DescriptionFilter from './components/DescriptionFilter';
 import FulltimeFilter from './components/FulltimeFilter';
 import JobList from './components/JobList';
 import LocationFilter from './components/LocationFilter';
-import useJobApi from './hooks/useJobApi';
+import useJobApi from '../../hooks/useJobApi';
 
 import styles from './index.module.css';
 
@@ -14,6 +14,7 @@ const Jobs: React.FC<propTypes> = () => {
   // api
   const { state, actions } = useJobApi();
   const { error, ids, list, loading } = state;
+  console.log(state);
 
   // params
   const [params, setParams] = useState({
@@ -47,7 +48,7 @@ const Jobs: React.FC<propTypes> = () => {
 
   // handle params changes
   useEffect(() => {
-    actions.performFetchJob(params);
+    actions.fetchJobList(params);
   }, [params]);
 
   return (
