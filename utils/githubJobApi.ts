@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-const PROXY = 'https://cors-anywhere.herokuapp.com';
+const PROXY = 'https://morning-journey-23048.herokuapp.com';
 const GITHUB_JOB_API_URL = 'https://jobs.github.com/';
 
 const githubJobApi = Axios.create({
