@@ -1,5 +1,6 @@
 import { Job } from '../../../types/Job.types';
-import styles from './ApplyGuide.module.css';
+
+import styles from '../styles/ApplyGuide.module.css';
 
 type propTypes = {
   howToApply: Job['how_to_apply'];
