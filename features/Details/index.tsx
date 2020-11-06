@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
-import useJobApi from '../../hooks/useJobApi';
+import { useContext, useEffect } from 'react';
+import JobContext from '../../api/JobContext';
+import ApplyGuide from './components/ApplyGuide';
 
 function Details({ id }) {
-  const { actions, state } = useJobApi();
+  const { actions, state } = useContext(JobContext);
   const { loading, error, selectedJob } = state;
 
   useEffect(() => {
@@ -18,7 +19,12 @@ function Details({ id }) {
   }
 
   if (selectedJob) {
-    return <div>{JSON.stringify(selectedJob)}</div>;
+    const { how_to_apply: howToApply } = selectedJob;
+    return (
+      <div>
+        <ApplyGuide howToApply={howToApply} />
+      </div>
+    );
   }
 
   return <div>path: {id} </div>;

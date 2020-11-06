@@ -5,7 +5,8 @@ import {
   jobListFilters,
   jobListType,
 } from '../types/Job.types';
-import jobsAPI from '../api/jobsAPI';
+
+import jobsAPI from './jobsAPI';
 
 function useJobApi() {
   const [error, setError] = useState();

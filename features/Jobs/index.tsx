@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
+import JobContext from '../../api/JobContext';
 import DescriptionFilter from './components/DescriptionFilter';
 import FulltimeFilter from './components/FulltimeFilter';
 import JobList from './components/JobList';
 import LocationFilter from './components/LocationFilter';
-import useJobApi from '../../hooks/useJobApi';
 
 import styles from './index.module.css';
 
@@ -12,9 +12,8 @@ type propTypes = {};
 
 const Jobs: React.FC<propTypes> = () => {
   // api
-  const { state, actions } = useJobApi();
+  const { state, actions } = useContext(JobContext);
   const { error, ids, list, loading } = state;
-  console.log(state);
 
   // params
   const [params, setParams] = useState({

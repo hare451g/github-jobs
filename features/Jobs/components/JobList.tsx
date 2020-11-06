@@ -1,3 +1,4 @@
+import ErrorMessage from '../../../components/ErrorMessage';
 import { jobListType, jobIdsType } from '../../../types/Job.types';
 import JobCard from './JobCard';
 
@@ -15,7 +16,7 @@ const JobList: React.FC<propTypes> = ({
   loading = false,
 }) => {
   if (error) {
-    return <div>{error}</div>;
+    return <ErrorMessage error={error} />;
   }
 
   if (loading) {

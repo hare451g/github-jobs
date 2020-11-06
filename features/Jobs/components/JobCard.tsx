@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import MaterialIcons from '../../../components/MaterialIcons';
 import { imgAlternative } from '../../../utils/assets';
 import { getDifferenceDate } from '../../../utils/dateTime';
@@ -24,31 +26,35 @@ const JobCard: React.FC<propTypes> = ({
   title,
   type,
 }) => (
-  <div className={styles.card}>
-    <div className={styles.cardBody}>
-      <img
-        alt={`${company} logo`}
-        className={styles.companyLogo}
-        src={imgAlternative(company_logo)}
-      />
-      <div className={styles.jobInfo}>
-        <div className={styles.jobInfoBody}>
-          <p className={styles.companyName}>{company}</p>
-          <p className={styles.jobTitle}>{title}</p>
-          <span className={styles.jobType}>{type}</span>
-        </div>
-        <div className={styles.jobInfoFooter}>
-          <p className={styles.jobAdditionalInfo}>
-            <MaterialIcons iconName="public" /> {location}
-          </p>
-          <p className={styles.jobAdditionalInfo}>
-            <MaterialIcons iconName="access_time" />{' '}
-            {getDifferenceDate(created_at)}
-          </p>
+  <Link href={`/${id}`}>
+    <a>
+      <div className={styles.card}>
+        <div className={styles.cardBody}>
+          <img
+            alt={`${company} logo`}
+            className={styles.companyLogo}
+            src={imgAlternative(company_logo)}
+          />
+          <div className={styles.jobInfo}>
+            <div className={styles.jobInfoBody}>
+              <p className={styles.companyName}>{company}</p>
+              <p className={styles.jobTitle}>{title}</p>
+              <span className={styles.jobType}>{type}</span>
+            </div>
+            <div className={styles.jobInfoFooter}>
+              <p className={styles.jobAdditionalInfo}>
+                <MaterialIcons iconName="public" /> {location}
+              </p>
+              <p className={styles.jobAdditionalInfo}>
+                <MaterialIcons iconName="access_time" />{' '}
+                {getDifferenceDate(created_at)}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </a>
+  </Link>
 );
 
 export default JobCard;
