@@ -1,25 +1,19 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import MaterialIcons from '../../../components/MaterialIcons';
+import { JobFeatureContext } from '../useJobFeature';
 import styles from './DescriptionFilter.module.css';
 
-type propTypes = {
-  initialValue?: string;
-  loading?: boolean;
-  submitSearch?: (keyword: string) => void;
-  placeholder?: string;
-};
+const DescriptionFilter: React.FC = () => {
+  const {
+    actions,
+    state: { isLoading },
+  } = useContext(JobFeatureContext);
 
-const DescriptionFilter: React.FC<propTypes> = ({
-  initialValue = '',
-  loading = false,
-  placeholder = 'Title, companies, expertise or benefits',
-  submitSearch,
-}) => {
-  const [keyword, setKeyword] = useState<string>(initialValue);
+  const [keyword, setKeyword] = useState<string>();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    submitSearch(keyword);
+    actions.handleSubmitSearch(keyword);
   };
 
   const handleKeywordchange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -32,15 +26,15 @@ const DescriptionFilter: React.FC<propTypes> = ({
         <input
           className={styles.searchInput}
           onChange={handleKeywordchange}
-          placeholder={placeholder}
+          placeholder="City, state, zip, country"
           value={keyword}
         />
         <button
           className={styles.submitButton}
-          disabled={loading}
+          disabled={isLoading}
           type="submit"
         >
-          {loading ? 'Loading' : 'Search'}
+          {isLoading ? 'Loading' : 'Search'}
         </button>
       </form>
     </div>

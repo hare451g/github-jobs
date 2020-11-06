@@ -1,10 +1,12 @@
 import Link from 'next/link';
 
 import MaterialIcons from '../../../components/MaterialIcons';
+
 import { imgAlternative } from '../../../utils/assets';
 import { getDifferenceDate } from '../../../utils/dateTime';
 
 import { Job } from '../../../types/Job.types';
+
 import styles from './JobCard.module.css';
 
 type propTypes = {
