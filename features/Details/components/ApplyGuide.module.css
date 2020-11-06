@@ -1,0 +1,15 @@
+.heading {
+  color: var(--grey);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+}
+.applyGuide {
+  color: var(--dark-blue);
+  font-family: 'Poppins';
+  line-height: 21px;
+  font-size: 14px;
+  font-weight: 500;
+}
