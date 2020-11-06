@@ -7,7 +7,7 @@ import { getDifferenceDate } from '../../../utils/dateTime';
 
 import { Job } from '../../../types/Job.types';
 
-import styles from './JobCard.module.css';
+import styles from '../styles/JobCard.module.css';
 
 type propTypes = {
   id: Job['id'];

@@ -1,12 +1,10 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-
-import JobContext from '../../api/JobContext';
 import DescriptionFilter from './components/DescriptionFilter';
 import FulltimeFilter from './components/FulltimeFilter';
 import JobList from './components/JobList';
 import LocationFilter from './components/LocationFilter';
 
-import styles from './index.module.css';
+import styles from './styles/index.module.css';
+
 import useJobFeature, { JobFeatureContext } from './useJobFeature';
 
 const Jobs: React.FC = () => {

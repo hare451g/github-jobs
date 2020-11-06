@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import MaterialIcons from '../../../components/MaterialIcons';
 import { JobFeatureContext } from '../useJobFeature';
 
-import styles from './LocationFilter.module.css';
+import styles from '../styles/LocationFilter.module.css';
 
 const LocationFilter: React.FC = () => {
   const { actions } = useContext(JobFeatureContext);

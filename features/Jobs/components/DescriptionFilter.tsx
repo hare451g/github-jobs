@@ -1,7 +1,7 @@
 import { FormEvent, useContext, useState } from 'react';
 import MaterialIcons from '../../../components/MaterialIcons';
 import { JobFeatureContext } from '../useJobFeature';
-import styles from './DescriptionFilter.module.css';
+import styles from '../styles/DescriptionFilter.module.css';
 
 const DescriptionFilter: React.FC = () => {
   const {
