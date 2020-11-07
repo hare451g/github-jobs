@@ -1,17 +1,15 @@
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+import SEO from '../components/SEO';
 import Details from '../features/Details';
 
 function JobByID() {
   const { query } = useRouter();
-  const title = 'Github Jobs - find your next job';
+  const title = 'Job Details';
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-      </Head>
+      <SEO title={title} />
       <Details id={query.id} />
     </>
   );

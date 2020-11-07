@@ -1,14 +1,11 @@
 import Jobs from '../features/Jobs';
-
-import Head from 'next/head';
+import SEO from '../components/SEO';
 
 function HomePage() {
   const title = 'Github Jobs - find your next job';
   return (
     <>
-      <Head>
-        <title>{title}</title>
-      </Head>
+      <SEO title={title} />
       <h1>Github Jobs</h1>
       <Jobs />
     </>
