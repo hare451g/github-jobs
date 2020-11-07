@@ -7,6 +7,7 @@ import MaterialIcons from '../../../components/MaterialIcons';
 import styles from '../styles/JobArticle.module.css';
 
 import { JobDetailsContext } from '../useJobDetails';
+import Skeleton from 'react-loading-skeleton';
 
 const ApplyGuide: React.FC = () => {
   const {
@@ -34,41 +35,68 @@ const ApplyGuide: React.FC = () => {
           </a>
         </Link>
         <h3 className={styles.heading}>How To Apply</h3>
-        <p
-          className={styles.applyGuide}
-          dangerouslySetInnerHTML={{
-            __html: isLoading ? 'loading . . . ' : howToApply,
-          }}
-        />
+        {isLoading ? (
+          <Skeleton width="100%" height={16} count={2} />
+        ) : (
+          <p
+            className={styles.applyGuide}
+            dangerouslySetInnerHTML={{ __html: howToApply }}
+          />
+        )}
       </section>
       <article className={styles.articleSection}>
         <section className={styles.headerSection}>
           <div className={styles.titleContainer}>
-            <h1 className={styles.jobTitle}>{title}</h1>
+            {isLoading ? (
+              <Skeleton height="36px" width="60%" />
+            ) : (
+              <h1 className={styles.jobTitle}>{title}</h1>
+            )}
             <div className={styles.jobType}>{type}</div>
           </div>
           <div className={styles.datePosted}>
             <MaterialIcons iconName="access_time" />{' '}
-            <span>{getDifferenceDate(createdAt)}</span>
+            {isLoading ? (
+              <Skeleton width={100} height={12} />
+            ) : (
+              <span>{getDifferenceDate(createdAt)}</span>
+            )}
           </div>
         </section>
         <section className={styles.companySection}>
-          <img
-            className={styles.companyLogo}
-            alt={`${company}'s logo`}
-            src={companyLogo}
-          />
+          {isLoading ? (
+            <Skeleton width={42} height={42} className={styles.companyLogo} />
+          ) : (
+            <img
+              className={styles.companyLogo}
+              alt={`${company}'s logo`}
+              src={
+                companyLogo ||
+                'https://via.placeholder.com/42x42.png?text=no-image'
+              }
+            />
+          )}
+
           <div>
-            <h2 className={styles.companyName}>{company}</h2>
+            {isLoading ? (
+              <Skeleton width="100%" height="18px" />
+            ) : (
+              <h2 className={styles.companyName}>{company}</h2>
+            )}
             <div className={styles.location}>
-              <MaterialIcons iconName="public" /> {location}
+              <MaterialIcons iconName="public" />{' '}
+              {isLoading ? <Skeleton width="75%" height="14px" /> : location}
             </div>
           </div>
         </section>
-        <section
-          className={styles.description}
-          dangerouslySetInnerHTML={{ __html: description }}
-        />
+        {isLoading ? (
+          <Skeleton width="60%" height="14px" count={10} />
+        ) : (
+          <section
+            className={styles.description}
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
+        )}
       </article>
     </div>
   );
