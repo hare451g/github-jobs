@@ -37,11 +37,11 @@ const initialState: jobState = {
   list: {},
   selected: null,
   filter: {
-    description: 'python',
-    location: 'us',
+    description: undefined,
+    location: undefined,
     lat: undefined,
     long: undefined,
-    fullTime: false,
+    fullTime: undefined,
   },
 };
 
