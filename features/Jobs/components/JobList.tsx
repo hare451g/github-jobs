@@ -19,7 +19,7 @@ const JobList: React.FC = () => {
   }
 
   if (isLoading) {
-    return <div>Loading contents . . . </div>;
+    return [...Array(10)].map(() => <JobCard isLoading={isLoading} />);
   }
 
   if (ids && ids.length > 0) {
