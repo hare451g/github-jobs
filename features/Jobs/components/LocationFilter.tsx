@@ -1,18 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import MaterialIcons from '../../../components/MaterialIcons';
+import { JobFeatureContext } from '../useJobFeature';
 
-import styles from './LocationFilter.module.css';
+import styles from '../styles/LocationFilter.module.css';
 
-type propTypes = {
-  onSubmit: (keyword: string) => void;
-  initialValue: string;
-};
+const LocationFilter: React.FC = () => {
+  const { actions } = useContext(JobFeatureContext);
 
-const LocationFilter: React.FC<propTypes> = ({
-  onSubmit,
-  initialValue = '',
-}) => {
   const popularLocations = [
     'Amsterdam',
     'Berlin',
@@ -21,7 +16,7 @@ const LocationFilter: React.FC<propTypes> = ({
     'New York',
   ];
 
-  const [keyword, setKeyword] = useState<string>(initialValue);
+  const [keyword, setKeyword] = useState<string>('');
 
   const handleKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
@@ -29,13 +24,13 @@ const LocationFilter: React.FC<propTypes> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(keyword);
+    actions.handleLocationChange(keyword);
   };
 
   const handleChangeCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setKeyword(e.target.value);
-    onSubmit(e.target.value);
+    actions.handleLocationChange(e.target.value);
   };
 
   return (

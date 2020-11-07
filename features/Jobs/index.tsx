@@ -1,84 +1,34 @@
-import { useEffect, useState } from 'react';
-
 import DescriptionFilter from './components/DescriptionFilter';
 import FulltimeFilter from './components/FulltimeFilter';
 import JobList from './components/JobList';
 import LocationFilter from './components/LocationFilter';
-import useJobApi from './hooks/useJobApi';
 
-import styles from './index.module.css';
+import styles from './styles/index.module.css';
 
-type propTypes = {};
+import useJobFeature, { JobFeatureContext } from './useJobFeature';
 
-const Jobs: React.FC<propTypes> = () => {
-  // api
-  const { state, actions } = useJobApi();
-  const { error, ids, list, loading } = state;
-
-  // params
-  const [params, setParams] = useState({
-    description: 'python',
-    location: 'us',
-    lat: undefined,
-    long: undefined,
-    fullTime: false,
-  });
-
-  // handle descriptions changes
-  const handleSubmitSearch = (keyword: string) => {
-    setParams((prev) => ({
-      ...prev,
-      description: keyword,
-    }));
-  };
-
-  // handle fulltime change
-  const handleFulltimeChange = () => {
-    setParams((prev) => ({ ...prev, fullTime: !prev.fullTime || undefined }));
-  };
-
-  // handle location change
-  const handleLocationChange = (keyword: string) => {
-    setParams((prev) => ({
-      ...prev,
-      location: keyword,
-    }));
-  };
-
-  // handle params changes
-  useEffect(() => {
-    actions.performFetchJob(params);
-  }, [params]);
+const Jobs: React.FC = () => {
+  const jobFeature = useJobFeature();
 
   return (
-    <div>
+    <JobFeatureContext.Provider value={jobFeature}>
       <section className={styles.descriptionFilterSection}>
-        <DescriptionFilter
-          initialValue={params.description}
-          submitSearch={handleSubmitSearch}
-          loading={loading}
-        />
+        <DescriptionFilter />
       </section>
       <div className={styles.body}>
         <section className={styles.filterSection}>
           <div className={styles.fulltimeFilterSection}>
-            <FulltimeFilter
-              isFulltime={params.fullTime}
-              onFulltimeChange={handleFulltimeChange}
-            />
+            <FulltimeFilter />
           </div>
           <div className={styles.locationFilterSection}>
-            <LocationFilter
-              initialValue={params.location}
-              onSubmit={handleLocationChange}
-            />
+            <LocationFilter />
           </div>
         </section>
         <section className={styles.jobSection}>
-          <JobList error={error} ids={ids} list={list} loading={loading} />
+          <JobList />
         </section>
       </div>
-    </div>
+    </JobFeatureContext.Provider>
   );
 };
 

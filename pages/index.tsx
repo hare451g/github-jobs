@@ -1,11 +1,13 @@
 import Jobs from '../features/Jobs';
 
+import Head from 'next/head';
+
 function HomePage() {
   return (
-    <section>
+    <>
       <h1>Github Jobs</h1>
       <Jobs />
-    </section>
+    </>
   );
 }
 

@@ -1,16 +1,20 @@
-type propTypes = {
-  isFulltime: boolean;
-  onFulltimeChange: () => void;
-};
+import { useContext } from 'react';
 
-const FulltimeFilter: React.FC<propTypes> = ({
-  isFulltime,
-  onFulltimeChange,
-}) => (
-  <label>
-    <input type="checkbox" checked={isFulltime} onChange={onFulltimeChange} />
-    <span>Full time</span>
-  </label>
-);
+import { JobFeatureContext } from '../useJobFeature';
+
+const FulltimeFilter: React.FC = () => {
+  const { actions, state } = useContext(JobFeatureContext);
+
+  return (
+    <label>
+      <input
+        type="checkbox"
+        checked={state.filter.fullTime}
+        onChange={actions.handleFulltimeChange}
+      />
+      <span>Full time</span>
+    </label>
+  );
+};
 
 export default FulltimeFilter;

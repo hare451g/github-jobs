@@ -1,4 +1,4 @@
-interface Job {
+type Job = {
   id: string;
   type: string;
   url: string;
@@ -10,9 +10,9 @@ interface Job {
   description: string;
   how_to_apply: string;
   company_logo: string;
-}
+};
 
-type requestParams = {
+type jobListFilters = {
   description?: string;
   location?: string;
   lat?: string;
@@ -20,22 +20,21 @@ type requestParams = {
   fullTime?: boolean;
 };
 
+type jobListType = { [key: string]: Job };
+type jobIdsType = Array<Job['id']>;
+
 type jobStateTypes = {
   loading: boolean;
   error?: Error['message'];
-  list: listType;
-  ids: idsType;
+  list: jobListType;
+  ids: jobIdsType;
 };
-
-type fetchPositionsType = (params: requestParams) => Promise<void>;
-type listType = { [key: string]: Job };
-type idsType = Array<Job['id']>;
 
 export {
   Job,
   jobStateTypes,
   requestParams,
-  fetchPositionsType,
-  listType,
-  idsType,
+  jobListFilters,
+  jobListType,
+  jobIdsType,
 };

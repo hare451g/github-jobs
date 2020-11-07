@@ -1,54 +1,46 @@
-import { idsType, listType } from '../Job.types';
+import { useContext, useEffect } from 'react';
+
+import ErrorMessage from '../../../components/ErrorMessage';
+
+import { JobFeatureContext } from '../useJobFeature';
+
 import JobCard from './JobCard';
 
-type propTypes = {
-  error: Error['message'];
-  ids?: idsType;
-  list?: listType;
-  loading: boolean;
-};
+const JobList: React.FC = () => {
+  const { state, actions } = useContext(JobFeatureContext);
+  const { error, isLoading, ids, list, filter } = state;
 
-const JobList: React.FC<propTypes> = ({
-  error = undefined,
-  ids,
-  list,
-  loading = false,
-}) => {
+  useEffect(() => {
+    actions.handleFetchJobs(filter);
+  }, [filter]);
+
   if (error) {
-    return <div>{error}</div>;
+    return <ErrorMessage error={error} />;
   }
 
-  if (loading) {
+  if (isLoading) {
     return <div>Loading contents . . . </div>;
   }
 
-  if (ids) {
-    return (
-      <div>
-        {ids.map((id) => {
-          const {
-            company,
-            company_logo,
-            created_at,
-            title,
-            type,
-            location,
-          } = list[id];
-          return (
-            <JobCard
-              key={id}
-              id={id}
-              company={company}
-              company_logo={company_logo}
-              created_at={created_at}
-              location={location}
-              title={title}
-              type={type}
-            />
-          );
-        })}
-      </div>
-    );
+  if (ids && ids.length > 0) {
+    const cards = ids
+      .map((id) => list[id])
+      .map(
+        ({ company, company_logo, created_at, id, location, title, type }) => (
+          <JobCard
+            key={id}
+            id={id}
+            company={company}
+            company_logo={company_logo}
+            created_at={created_at}
+            location={location}
+            title={title}
+            type={type}
+          />
+        )
+      );
+
+    return <div>{cards}</div>;
   }
 
   return <div>Empty job list</div>;
