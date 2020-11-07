@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getDifferenceDate } from '../../../utils/dateTime';
 import MaterialIcons from '../../../components/MaterialIcons';
 
-import styles from '../styles/ApplyGuide.module.css';
+import styles from '../styles/JobArticle.module.css';
 
 import { JobDetailsContext } from '../useJobDetails';
 

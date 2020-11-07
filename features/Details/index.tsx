@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import ApplyGuide from './components/ApplyGuide';
+import JobArticle from './components/JobArticle';
 import useJobDetails, { JobDetailsContext } from './useJobDetails';
 
 function Details({ id }) {
@@ -13,7 +13,7 @@ function Details({ id }) {
   return (
     <JobDetailsContext.Provider value={jobDetailsFeature}>
       <h1>Github Jobs</h1>
-      <ApplyGuide />
+      <JobArticle />
     </JobDetailsContext.Provider>
   );
 }
