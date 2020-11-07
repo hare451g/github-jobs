@@ -17,7 +17,6 @@ const LocationFilter: React.FC = () => {
   ];
 
   const [keyword, setKeyword] = useState<string>('');
-  const [isTyping, setIsTyping] = useState<boolean>(false);
 
   const handleKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
