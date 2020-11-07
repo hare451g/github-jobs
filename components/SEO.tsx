@@ -8,7 +8,7 @@ type propTypes = {
 
 const SEO: FC<propTypes> = ({ title }) => (
   <Head>
-    <title>{title}</title>
+    <title>{`Github Jobs - ${title}`}</title>
     {Object.keys(meta).map((key) => (
       <meta name={key} content={meta[key]} key={key} />
     ))}
