@@ -1,10 +1,12 @@
 import { useContext } from 'react';
+import Link from 'next/link';
 
 import { getDifferenceDate } from '../../../utils/dateTime';
 import MaterialIcons from '../../../components/MaterialIcons';
+
 import styles from '../styles/ApplyGuide.module.css';
+
 import { JobDetailsContext } from '../useJobDetails';
-import Link from 'next/link';
 
 const ApplyGuide: React.FC = () => {
   const {
@@ -55,8 +57,6 @@ const ApplyGuide: React.FC = () => {
             className={styles.companyLogo}
             alt={`${company}'s logo`}
             src={companyLogo}
-            height={42}
-            width={42}
           />
           <div>
             <h2 className={styles.companyName}>{company}</h2>
@@ -67,10 +67,8 @@ const ApplyGuide: React.FC = () => {
         </section>
         <section
           className={styles.description}
-          dangerouslySetInnerHTML={{
-            __html: description,
-          }}
-        ></section>
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       </article>
     </div>
   );
