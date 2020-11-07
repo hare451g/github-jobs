@@ -17,6 +17,7 @@ const LocationFilter: React.FC = () => {
   ];
 
   const [keyword, setKeyword] = useState<string>('');
+  const [isTyping, setIsTyping] = useState<boolean>(false);
 
   const handleKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
@@ -25,12 +26,6 @@ const LocationFilter: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     actions.handleLocationChange(keyword);
-  };
-
-  const handleChangeCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setKeyword(e.target.value);
-    actions.handleLocationChange(e.target.value);
   };
 
   return (
@@ -52,7 +47,7 @@ const LocationFilter: React.FC = () => {
             <input
               type="checkbox"
               value={locationName}
-              onChange={handleChangeCheckbox}
+              onChange={handleKeywordChange}
               checked={keyword === locationName}
             />
             <span>{locationName}</span>
