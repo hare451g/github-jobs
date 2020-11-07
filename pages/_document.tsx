@@ -7,6 +7,7 @@ class CustomDocument extends Document {
   }
 
   render() {
+    const title = 'Github Jobs - find your next job';
     return (
       <Html>
         <Head>
@@ -18,6 +19,8 @@ class CustomDocument extends Document {
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
           />
+
+          <title>{title}</title>
         </Head>
         <body>
           <Main />
