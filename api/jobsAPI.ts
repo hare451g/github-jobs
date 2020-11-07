@@ -11,10 +11,10 @@ const normalizer = (previous: Job | {}, current: Job) => ({
   [current.id]: current,
 });
 
-async function fetchJobList(filters: jobListFilters) {
+async function fetchJobList(filters: jobListFilters, page: number = 0) {
   try {
     const response = await githubJobApi.get('positions.json', {
-      params: filters,
+      params: { ...filters, page },
     });
 
     // normalize data

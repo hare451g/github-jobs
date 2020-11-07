@@ -27,12 +27,6 @@ const LocationFilter: React.FC = () => {
     actions.handleLocationChange(keyword);
   };
 
-  const handleChangeCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setKeyword(e.target.value);
-    actions.handleLocationChange(e.target.value);
-  };
-
   return (
     <div>
       <h4 className={styles.formTitle}>Location</h4>
@@ -52,7 +46,7 @@ const LocationFilter: React.FC = () => {
             <input
               type="checkbox"
               value={locationName}
-              onChange={handleChangeCheckbox}
+              onChange={handleKeywordChange}
               checked={keyword === locationName}
             />
             <span>{locationName}</span>
