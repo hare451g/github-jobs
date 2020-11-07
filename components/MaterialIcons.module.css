@@ -1,5 +1,6 @@
 .materialIconsWwrapper {
-  margin: 0 4px;
+  margin: 0;
+  margin-right: 4px;
   display: flex;
   align-items: center;
 }

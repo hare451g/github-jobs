@@ -34,7 +34,7 @@ async function fetchJobById(id: Job['id']) {
       throw new Error('Invalid id!');
     }
 
-    const endpoint = `position/${id}.json`;
+    const endpoint = `positions/${id}.json`;
     const response = await githubJobApi.get(endpoint);
 
     // normalize data

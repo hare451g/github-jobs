@@ -18,7 +18,19 @@ type useJobDetailsType = {
 const initialState: jobDetailsState = {
   isLoading: false,
   error: null,
-  data: undefined,
+  data: {
+    company: 'company is not available',
+    company_logo: 'https://via.placeholder.com/42',
+    company_url: 'localhost',
+    created_at: '02/11/2020',
+    description: 'No descriptions',
+    how_to_apply: 'not available',
+    id: '',
+    location: 'location is not available',
+    title: 'Untitled Job Position',
+    type: 'type',
+    url: '',
+  },
 };
 
 export const JobDetailsContext: Context<useJobDetailsType> = createContext({
